@@ -1,6 +1,6 @@
-// Soccer League Project
+// Soccer League Project 1
 
-/* For the time being I was unable to meet the "Exceeds Expectaions" grading but I am looking forward to doing more research for it in the future */
+
 
 //********* Part One ***************
 
