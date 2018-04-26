@@ -8,24 +8,24 @@
 
 var players: [[String : Any]] = [
 
-["playerName": "Joe Smith", "height": 42.0, "experience": true, "gaurdians": "Jim and Jan Smith"],
-["playerName": "Jill Tanner", "height": 36.0, "experience": true, "gaurdians": "Clara Tanner"],
-["playerName": "Bill Bon", "height": 43.0, "experience": true, "gaurdians": "Sara and Jenny Bon"],
-["playerName": "Eva Gordon", "height": 45.0, "experience": false, "gaurdians": "Wendy and Mike Gordon"],
-["playerName": "Matt Gill", "height": 40.0, "experience": false, "gaurdians" : "Charles and Sylvia Gill"],
-["playerName": "Kenny Stein", "height": 41.0, "experience": false, "gaurdians" : "Bill and Hillary Stein"],
-["playerName": "Sammy Adams", "height": 45.0, "experience" : false, "gaurdians" : "Jeff Adams"],
-["playerName": "Karl Saygan", "height": 42.0, "experience" : true, "gaurdians" : "Heather Bledsoe"],
-["playerName": "Suzane Greenberg", "height": 44.0, "experience" : true, "gaurdians" : "Henrietta Dumas"],
-["playerName": "Sal Dali", "height": 41.0, "experience" : false, "gaurdians" : "Gala Dali"],
-["playerName": "Joe Kavalier", "height": 39.0, "experience" : false, "gaurdians" : "Sam and Elaine Kavalier"],
-["playerName": "Ben Finkelstein", "height": 44.0, "experience" : false, "gaurdians" : "Aaron and Jill Finkenlstein"],
-["playerName": "Diego Soto", "height": 41.0, "experience" : true, "gaurdians" : "Robin and Sarika Soto"],
-["playerName": "Chloe Alaska", "height": 47.0, "experience" : false, "gaurdians" : "David and Jamie Alaska"],
-["playerName": "Arnold Willis", "height": 43.0, "experience" : false, "gaurdians" : "Claire Willis"],
-["playerName": "Philip Helm", "height": 44.0, "experience" : true, "gaurdians" : "Thomas Helm and Eva Jones"],
-["playerName": "Les Clay", "height": 42.0, "experience" : true, "gaurdians" : "Wynonna Brown"],
-["playerName": "Herschel Krustofski", "height": 45.0, "experience" : true, "gaurdians" : "Hyman and Rachel Krustofski"],
+["playerName": "Joe Smith", "height": 42.0, "hasExperience": true, "guardians": "Jim and Jan Smith"],
+["playerName": "Jill Tanner", "height": 36.0, "hasExperience": true, "guardians": "Clara Tanner"],
+["playerName": "Bill Bon", "height": 43.0, "hasExperience": true, "guardians": "Sara and Jenny Bon"],
+["playerName": "Eva Gordon", "height": 45.0, "hasExperience": false, "guardians": "Wendy and Mike Gordon"],
+["playerName": "Matt Gill", "height": 40.0, "hasExperience": false, "guardians" : "Charles and Sylvia Gill"],
+["playerName": "Kenny Stein", "height": 41.0, "hasExperience": false, "guardians" : "Bill and Hillary Stein"],
+["playerName": "Sammy Adams", "height": 45.0, "hasExperience" : false, "guardians" : "Jeff Adams"],
+["playerName": "Karl Saygan", "height": 42.0, "hasExperience" : true, "guardians" : "Heather Bledsoe"],
+["playerName": "Suzane Greenberg", "height": 44.0, "hasExperience" : true, "guardians" : "Henrietta Dumas"],
+["playerName": "Sal Dali", "height": 41.0, "hasExperience" : false, "guardians" : "Gala Dali"],
+["playerName": "Joe Kavalier", "height": 39.0, "hasExperience" : false, "guardians" : "Sam and Elaine Kavalier"],
+["playerName": "Ben Finkelstein", "height": 44.0, "hasExperience" : false, "guardians" : "Aaron and Jill Finkenlstein"],
+["playerName": "Diego Soto", "height": 41.0, "hasExperience" : true, "guardians" : "Robin and Sarika Soto"],
+["playerName": "Chloe Alaska", "height": 47.0, "hasExperience" : false, "guardians" : "David and Jamie Alaska"],
+["playerName": "Arnold Willis", "height": 43.0, "hasExperience" : false, "guardians" : "Claire Willis"],
+["playerName": "Philip Helm", "height": 44.0, "hasExperience" : true, "guardians" : "Thomas Helm and Eva Jones"],
+["playerName": "Les Clay", "height": 42.0, "hasExperience" : true, "guardians" : "Wynonna Brown"],
+["playerName": "Herschel Krustofski", "height": 45.0, "hasExperience" : true, "guardians" : "Hyman and Rachel Krustofski"],
 ]
 
 
@@ -50,7 +50,7 @@ var theLeague: [[String : Any]] = []
 // divide players with or without experiance
 
 for player in players {
-    if let isExperienced = player["experience"] as? Bool {
+    if let isExperienced = player["hasExperience"] as? Bool {
         if isExperienced == true {
             experiencedPlayers.append(player)
         } else {
@@ -78,7 +78,7 @@ func sortByExperience(for player: [String: Any]) {
 for player in experiencedPlayers {
     sortByExperience(for: player)
 }
-for player in noExperiencePlayers {
+ for player in noExperiencePlayers {
     sortByExperience(for: player)
 }
 
@@ -99,17 +99,17 @@ var letters: [String] = []
 
 
 // Practice dates
-let dragonsPractice = ["Date": "March 17th", "Time": "1pm"]
-let sharksPractice = ["Date": "March 17th", "Time": "3pm"]
-let raptorsPractice = ["Date": "March 18th", "Time": "1pm"]
+let dragonsPractice = ["date": "March 17th", "time": "1pm"]
+let sharksPractice = ["date": "March 17th", "time": "3pm"]
+let raptorsPractice = ["date": "March 18th", "time": "1pm"]
 
 
 func welcomeLetter() {
     for player in teamDragons {
         if let guardianName = player["guardians"],
             let playersName = player["playerName"],
-            let practiceTime = dragonsPractice["Time"],
-            let practiceDate = dragonsPractice["Date"] {
+            let practiceTime = dragonsPractice["time"],
+            let practiceDate = dragonsPractice["date"] {
             let letter = "Hello \(guardianName), Your child \(playersName) will be joining the Mighty Dragons! Our first team practice will be held on \(practiceDate) at \(practiceTime). We are excited to see you there!"
            letters.append(letter)
         }   else {
@@ -120,8 +120,8 @@ func welcomeLetter() {
     for player in teamSharks {
         if let guardiansName = player["guardians"],
             let playersName = player["playerName"],
-            let practiceTime = sharksPractice["Time"],
-            let practiceDate = sharksPractice["Date"] {
+            let practiceTime = sharksPractice["time"],
+            let practiceDate = sharksPractice["date"] {
             let letter = "Hello \(guardiansName), Your child \(playersName) will be joining the Mighty Sharks! Our first team practice will be held on \(practiceDate) at \(practiceTime). We are excited to see you there!"
            letters.append(letter)
         }   else {
@@ -132,8 +132,8 @@ func welcomeLetter() {
     for player in teamRaptors {
         if let guardiansName = player["guardians"],
             let playersName = player["playerName"],
-            let practcieTime = raptorsPractice["Time"],
-            let practiceDate = raptorsPractice["Date"] {
+            let practcieTime = raptorsPractice["time"],
+            let practiceDate = raptorsPractice["date"] {
             let letter = "Hello \(guardiansName), Your child \(playersName) will be joining the Mighty Raptors! Our first team practice will be held on \(practiceDate) at \(practcieTime). We are excited to see you there!"
            letters.append(letter)
         }   else {
